@@ -1,0 +1,17 @@
+{
+  "name": "competitiveprogramming",
+  "version": "1.0.0",
+  "description": "Adding priority queue library for NodeJs/javascript users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "priorityQueue"
+  ],
+  "author": "Abhas Bhatnagar",
+  "license": "ISC",
+  "dependencies": {
+    "demo-package-eg1": "^1.0.0"
+  }
+}

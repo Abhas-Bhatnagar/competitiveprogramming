@@ -97,6 +97,9 @@ class priorityQueue {
     getTopElement(){
         return this.pqueue[0];
     }
+    getSize() {
+        return this.size+1;
+    }
 }
 
 /**

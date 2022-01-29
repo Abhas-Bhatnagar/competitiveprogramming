@@ -1,5 +1,3 @@
-let {priorityQueue} = require('./priorityQueue.js');
+let priorityQueue = require('./priorityQueue.js');
 
-module.exports = {
-    priorityQueue
-};
+module.exports = priorityQueue;

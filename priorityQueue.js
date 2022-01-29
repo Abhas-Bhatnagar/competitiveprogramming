@@ -112,9 +112,7 @@ form of array as:
 // Insert the element to the
 // priority queue
 
-module.exports = {
-    priorityQueue
-};
+module.exports = priorityQueue;
 
 
 

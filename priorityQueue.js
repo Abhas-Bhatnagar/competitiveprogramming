@@ -1,8 +1,8 @@
 class priorityQueue {
-    constructor(pqueueType) {
+    constructor(comparator) {
         this.pqueue = [];
         this.size = -1;    
-        this.pqueueType = pqueueType ? pqueueType : "max";
+        this.comparator = comparator ? comparator : (a,b)=>{ return a < b ;};
     }
     parent(index){
         return parseInt((index - 1) / 2);
@@ -14,22 +14,12 @@ class priorityQueue {
     	return parseInt((2 * index) + 2);
     }
     shiftUp(index){
-        if (this.pqueueType == "max") {
-            while (index > 0 && this.pqueue[this.parent(index)].key < this.pqueue[index].key) {
-                // Swap parent and current node
-                this.swap(this.parent(index), index);
-                // Update i to parent of i
-                index = this.parent(index);
-            }    
-        } else {
-            while (index > 0 && this.pqueue[this.parent(index)].key > this.pqueue[index].key) {
-                // Swap parent and current node
-                this.swap(this.parent(index), index);
-                // Update i to parent of i
-                index = this.parent(index);
-            }
-        }
-        
+        while (index > 0 && this.comparator(this.pqueue[this.parent(index)], this.pqueue[index])) {
+            // Swap parent and current node
+            this.swap(this.parent(index), index);
+            // Update i to parent of i
+            index = this.parent(index);
+        }    
     }
     swap(index1, index2){
         let temp = this.pqueue[index1];
@@ -38,30 +28,18 @@ class priorityQueue {
     }
     shiftDown(index){
         let maxOrMinIndex = index;
-        if (this.pqueueType == "max") {
-            // Left Child
-            let l = this.leftChild(index);
-            if (l <= this.size && this.pqueue[l].key > this.pqueue[maxOrMinIndex].key) {
-                maxOrMinIndex = l;
-            }
-            // Right Child
-            let r = this.rightChild(index);
-            if (r <= this.size && this.pqueue[r].key > this.pqueue[maxOrMinIndex].key) {
-                maxOrMinIndex = r;
-            } 
-        } else {
-            // Left Child
-            let l = this.leftChild(index);
-            if (l <= this.size && this.pqueue[l].key < this.pqueue[maxOrMinIndex].key) {
-                maxOrMinIndex = l;
-            }
-            // Right Child
-            let r = this.rightChild(index);
-            if (r <= this.size && this.pqueue[r].key < this.pqueue[maxOrMinIndex].key) {
-                maxOrMinIndex = r;
-            }
-        }
+        // Left Child
+        let l = this.leftChild(index);
         
+        if ( l <= this.size && this.comparator(this.pqueue[maxOrMinIndex], this.pqueue[l]) ) {
+            maxOrMinIndex = l;
+        }
+        // Right Child
+        let r = this.rightChild(index);
+        if ( r <= this.size && this.comparator(this.pqueue[maxOrMinIndex], this.pqueue[r]) ) {
+            maxOrMinIndex = r;
+        } 
+
         if (index != maxOrMinIndex) {
             this.swap(index, maxOrMinIndex);
             this.shiftDown(maxOrMinIndex);
@@ -104,7 +82,7 @@ class priorityQueue {
 
 /**
 (function main() {
-    let pqueue = new priorityQueue("min");
+    let pqueue = new priorityQueue((a,b)=>{return a.key < b.key;});
     pqueue.insert({key :45 , data : null});
     pqueue.insert({key :20 , data : null});
     pqueue.insert({key :14 , data : null});
@@ -116,7 +94,7 @@ class priorityQueue {
     pqueue.insert({key :7 , data : null});
     console.log(pqueue)
 })();
- */
+*/
 
 /*
         45

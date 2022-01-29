@@ -1,5 +1,5 @@
 {
-  "name": "competitiveprogramming",
+  "name": "ds-helpers",
   "version": "1.0.1",
   "description": "Adding priority queue library for NodeJs/javascript users",
   "main": "index.js",
@@ -14,7 +14,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Abhas-Bhatnagar/competitiveprogramming.git"
-  }
-
+    "url": "git+https://github.com/Abhas-Bhatnagar/ds-helpers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Abhas-Bhatnagar/ds-helpers/issues"
+  },
+  "homepage": "https://github.com/Abhas-Bhatnagar/ds-helpers#readme"
 }

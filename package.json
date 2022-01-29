@@ -1,6 +1,6 @@
 {
   "name": "ds-helpers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Adding priority queue library for NodeJs/javascript users",
   "main": "index.js",
   "scripts": {
